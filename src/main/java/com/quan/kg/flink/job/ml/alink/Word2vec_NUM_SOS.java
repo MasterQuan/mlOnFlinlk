@@ -30,6 +30,7 @@ public class Word2vec_NUM_SOS {
 				.setFilePath(URL)
 				.setTextCol(SCHEMA_STR);
 		
+		
 		BatchOperator train = new Word2VecTrainBatchOp()
 				.setSelectedCol(SCHEMA_STR)
 		 		.setMinCount(1)
@@ -39,7 +40,8 @@ public class Word2vec_NUM_SOS {
 		SosBatchOp sos = new SosBatchOp()
 				.setVectorCol(train.getColNames()[1])
 				.setPredictionCol("outlier_score")
-				.setPerplexity(3.0);
+				.setPerplexity(3.0)
+				.linkFrom(train);
 		
 		sos.linkFrom(train).print();
 	}

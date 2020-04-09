@@ -43,6 +43,5 @@ public class Word2vec_NUM_Clustering {
 				.setReservedCols("word")
 				.setMaxIter(100);
 		kmeans.fit(train).transform(train).print();
-//		train.print();
 	}
 }
